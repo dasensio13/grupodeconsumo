@@ -1,4 +1,4 @@
-package dasensio.java.grupodeconsumo.dao.group;
+package dasensio.java.grupodeconsumo.dao.group.def;
 
 import java.util.List;
 

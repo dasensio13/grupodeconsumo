@@ -44,6 +44,10 @@ public class Product implements Serializable {
 	private ProductStatus status;
 
 	@ManyToOne
+	@JoinColumn(name = "PRODUCT_CATEGORY_ID")
+	private ProductCategory productCategory;
+
+	@ManyToOne
 	@JoinColumn(name = "PRODUCER_ID")
 	private Producer producer;
 
@@ -93,6 +97,14 @@ public class Product implements Serializable {
 
 	public void setStatus(final ProductStatus status) {
 		this.status = status;
+	}
+
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(final ProductCategory productCategory) {
+		this.productCategory = productCategory;
 	}
 
 }

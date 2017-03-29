@@ -1,10 +1,11 @@
-package dasensio.java.grupodeconsumo.dao.group;
+package dasensio.java.grupodeconsumo.dao.group.impl;
 
 import java.io.Serializable;
 
 import org.springframework.stereotype.Repository;
 
 import dasensio.java.grupodeconsumo.dao.AbstractJpaDao;
+import dasensio.java.grupodeconsumo.dao.group.def.IMemberDao;
 import dasensio.java.grupodeconsumo.model.group.Member;
 
 @Repository("memberDao")

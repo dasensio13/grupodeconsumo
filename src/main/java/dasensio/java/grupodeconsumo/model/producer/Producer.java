@@ -35,6 +35,9 @@ public class Producer implements Serializable {
 	@NotNull
 	private String name;
 
+	@Column(name = "DESCRIPTION")
+	private String description;
+
 	@ManyToOne
 	@JoinColumn(name = "ADDRESS_ID")
 	private Address address;
@@ -94,6 +97,14 @@ public class Producer implements Serializable {
 
 	public void setProduct(final Set<Product> product) {
 		this.product = product;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
 }
