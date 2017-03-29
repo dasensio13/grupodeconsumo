@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dasensio.java.grupodeconsumo.model.member.Member;
+import dasensio.java.grupodeconsumo.model.group.Member;
 
 @RestController
 public class MemberController implements Serializable {

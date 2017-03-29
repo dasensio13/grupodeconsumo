@@ -1,11 +1,11 @@
-package dasensio.java.grupodeconsumo.dao.member;
+package dasensio.java.grupodeconsumo.dao.group;
 
 import java.io.Serializable;
 
 import org.springframework.stereotype.Repository;
 
 import dasensio.java.grupodeconsumo.dao.AbstractJpaDao;
-import dasensio.java.grupodeconsumo.model.member.Member;
+import dasensio.java.grupodeconsumo.model.group.Member;
 
 @Repository("memberDao")
 public class MemberDao extends AbstractJpaDao<Member> implements IMemberDao, Serializable {

@@ -1,8 +1,8 @@
-package dasensio.java.grupodeconsumo.dao.member;
+package dasensio.java.grupodeconsumo.dao.group;
 
 import java.util.List;
 
-import dasensio.java.grupodeconsumo.model.member.Member;
+import dasensio.java.grupodeconsumo.model.group.Member;
 
 public interface IMemberDao {
 

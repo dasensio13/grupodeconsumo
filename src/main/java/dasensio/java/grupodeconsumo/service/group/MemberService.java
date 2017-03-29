@@ -1,4 +1,4 @@
-package dasensio.java.grupodeconsumo.service.member;
+package dasensio.java.grupodeconsumo.service.group;
 
 import java.io.Serializable;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dasensio.java.grupodeconsumo.dao.AbstractJpaDao;
-import dasensio.java.grupodeconsumo.dao.member.MemberDao;
-import dasensio.java.grupodeconsumo.model.member.Member;
+import dasensio.java.grupodeconsumo.dao.group.MemberDao;
+import dasensio.java.grupodeconsumo.model.group.Member;
 import dasensio.java.grupodeconsumo.service.AbstractService;
 
 @Service("memberService")

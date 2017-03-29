@@ -1,8 +1,8 @@
-package dasensio.java.grupodeconsumo.service.member;
+package dasensio.java.grupodeconsumo.service.group;
 
 import java.util.List;
 
-import dasensio.java.grupodeconsumo.model.member.Member;
+import dasensio.java.grupodeconsumo.model.group.Member;
 
 public interface IMemberService {
 
