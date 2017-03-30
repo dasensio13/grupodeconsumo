@@ -6,25 +6,28 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 @Entity
 @Table(name = "ROLES")
 @XmlRootElement
-public class Role implements Serializable {
+public class Role extends AbstractPersistable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 1246525614920888649L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
-	private long id;
+	public Role() {
+		this(null);
+	}
+
+	public Role(final Long id) {
+		super();
+		this.setId(id);
+	}
 
 	@Column(unique = true, nullable = false)
 	@NotNull
@@ -32,14 +35,6 @@ public class Role implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Permission> permissiones;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

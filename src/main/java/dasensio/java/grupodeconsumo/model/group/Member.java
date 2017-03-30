@@ -7,9 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -17,20 +14,26 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 import dasensio.java.grupodeconsumo.model.contact.Address;
 import dasensio.java.grupodeconsumo.model.contact.Contact;
 
 @Entity
 @Table(name = "MEMBERS")
 @XmlRootElement
-public class Member implements Serializable {
+public class Member extends AbstractPersistable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 5527411118611246968L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
-	private long id;
+	public Member() {
+		this(null);
+	}
+
+	public Member(final Long id) {
+		super();
+		this.setId(id);
+	}
 
 	@Column(name = "NAME", nullable = false)
 	@NotNull
@@ -54,14 +57,6 @@ public class Member implements Serializable {
 
 	@OneToMany
 	private Set<Contact> contact;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

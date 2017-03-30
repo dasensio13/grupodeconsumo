@@ -5,9 +5,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -15,20 +12,26 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 import dasensio.java.grupodeconsumo.model.contact.Address;
 import dasensio.java.grupodeconsumo.model.contact.Contact;
 
 @Entity
 @Table(name = "GROUPS")
 @XmlRootElement
-public class Group implements Serializable {
+public class Group extends AbstractPersistable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 4440603081507923962L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
-	private long id;
+	public Group() {
+		this(null);
+	}
+
+	public Group(final Long id) {
+		super();
+		this.setId(id);
+	}
 
 	@Column(name = "NAME", nullable = false)
 	@NotNull
@@ -46,14 +49,6 @@ public class Group implements Serializable {
 
 	@OneToMany(mappedBy = "group")
 	private Set<Family> families;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

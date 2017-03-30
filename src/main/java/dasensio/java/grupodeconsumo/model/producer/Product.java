@@ -6,26 +6,29 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 @Entity
 @Table(name = "PRODUCTS")
 @XmlRootElement
-public class Product implements Serializable {
+public class Product extends AbstractPersistable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 4760914927379700011L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
-	private long id;
+	public Product() {
+		this(null);
+	}
+
+	public Product(final Long id) {
+		super();
+		this.setId(id);
+	}
 
 	@Column(name = "NAME", nullable = false)
 	@NotNull
@@ -50,14 +53,6 @@ public class Product implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "PRODUCER_ID")
 	private Producer producer;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

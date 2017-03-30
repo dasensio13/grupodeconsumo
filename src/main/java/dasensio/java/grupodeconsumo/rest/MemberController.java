@@ -16,10 +16,9 @@ public class MemberController implements Serializable {
 
 	private final AtomicLong counter = new AtomicLong();
 
-	@RequestMapping("/member")
+	@RequestMapping("/member-rest")
 	public Member member(@RequestParam(value = "name", defaultValue = "David") final String name) {
-		Member member = new Member();
-		member.setId(counter.incrementAndGet());
+		Member member = new Member(counter.incrementAndGet());
 		member.setName(name);
 		return member;
 	}

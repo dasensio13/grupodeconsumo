@@ -4,24 +4,27 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 @Entity
 @Table(name = "ADDRESSES")
 @XmlRootElement
-public class Address implements Serializable {
+public class Address extends AbstractPersistable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 5489982120519919949L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
-	private long id;
+	public Address() {
+		this(null);
+	}
+
+	public Address(final Long id) {
+		super();
+		this.setId(id);
+	}
 
 	@Column(name = "LINE1", nullable = false)
 	@NotNull
@@ -45,14 +48,6 @@ public class Address implements Serializable {
 	@Column(name = "COUNTRY", nullable = false)
 	@NotNull
 	private String country;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public String getLine1() {
 		return line1;

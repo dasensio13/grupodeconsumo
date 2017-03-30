@@ -11,6 +11,8 @@ import dasensio.java.grupodeconsumo.model.order.Order;
 @Repository("orderDao")
 public class OrderDao extends AbstractJpaDao<Order> implements IOrderDao, Serializable {
 
+	private static final long serialVersionUID = -7257423156518177832L;
+
 	public OrderDao() {
 		super();
 		setClazz(Order.class);

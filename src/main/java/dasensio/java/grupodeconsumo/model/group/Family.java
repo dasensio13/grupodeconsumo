@@ -5,26 +5,29 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 @Entity
 @Table(name = "FAMILIES")
 @XmlRootElement
-public class Family implements Serializable {
+public class Family extends AbstractPersistable<Long> implements Serializable {
 
 	private static final long serialVersionUID = 6762849574506753664L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
-	private long id;
+	public Family() {
+		this(null);
+	}
+
+	public Family(final Long id) {
+		super();
+		this.setId(id);
+	}
 
 	@Column(name = "NAME")
 	private String name;
@@ -35,14 +38,6 @@ public class Family implements Serializable {
 
 	@OneToMany(mappedBy = "family")
 	private Set<Member> members;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
